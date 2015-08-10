@@ -1,0 +1,18 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "authors": [
+    "Peter Oliver"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3"
+  }
+}

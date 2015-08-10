@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="adsrApp" >
+  <head>
+    <title>ADSR Design Tool</title>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/controllers.js"></script>
+  </head>
+  <body ng-controller="adsrCtrl">
+    <h1>GoFar ADSR Design Tool</h1>
+    <div class="parameter-input">
+        <div class="">
+            <span>Delay </span><input id="inputDelay" ng-model="adsr.params.delay" type="number" placeholder=""><span> ms</span>
+        </div>
+        <div class="">
+            <span>Attack </span><input id="inputAttack" ng-model="adsr.params.attack" type="number" placeholder=""><span> slope</span>
+        </div>
+        <div class="">
+            <span>Sustain </span><input id="inputSustain" ng-model="adsr.params.sustain" type="number" placeholder=""><span> ms</span>
+        </div>
+        <div class="">
+            <span>Decay </span><input id="inputDecay" ng-model="adsr.params.decay" type="number" placeholder=""><span> slope</span>
+        </div>
+    </div>
+
+    <div class="adsr-view">
+        <button ng-click="adsr.play()">Play</button>
+        <button ng-click="adsr.stop()">Stop</button>
+        <p>ADSR State : {{adsr.state}}</p>
+        <p>output : {{adsr.outputStr}}</p>
+    </div>
+    <div class="ray-view">
+      <div class="ray-leds" ng-style="{'background-color':adsr.outputColour}"></div>
+    </div>
+  </body>
+</html>
