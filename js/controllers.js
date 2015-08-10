@@ -45,11 +45,20 @@ adsrApp.controller('adsrCtrl', function($scope,$interval) {
         $scope.adsr.reset();
     };
 
+    $scope.adsr.calculateOutput = function () {
+        var output = Math.round($scope.adsr.output);
+        var redHex = ('0'+output.toString(16)).substr(-2);
+        var greenHex = '04';
+        var blueHex = ('0'+(255-output).toString(16)).substr(-2);
+        $scope.adsr.outputColour = '#'+redHex+greenHex+blueHex;
+    }
+
 
     $scope.adsr.reset = function () {
         $scope.adsr.stopping = false;
         $scope.adsr.setState('idle');
         $scope.adsr.output = 0;
+        $scope.adsr.calculateOutput();
     };
     $scope.adsr.reset();
 
@@ -81,13 +90,8 @@ adsrApp.controller('adsrCtrl', function($scope,$interval) {
             }
         }
         $scope.adsr.outputStr = Math.round($scope.adsr.output);
-        var output = Math.round($scope.adsr.output);
-        var redHex = ('0'+output.toString(16)).substr(-2);
 
-        var greenHex = '04';
-        var blueHex = ('0'+(255-output).toString(16)).substr(-2);
-        $scope.adsr.outputColour = '#'+redHex+greenHex+blueHex;
-        console.log($scope.adsr.outputColour);
+        $scope.adsr.calculateOutput();
     }
 
 
